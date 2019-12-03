@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 def main():
     with open("input.txt", "r") as f:
         wire1 = f.readline().strip().split(",")
@@ -20,31 +17,31 @@ def get_path(wire):
 
     for val in wire:
         direction = val[0]
-        num = int(val[1:])
+        length = int(val[1:])
         last_visited = get_last_visited(visited_positions)
         last_x = last_visited[0]
         last_y = last_visited[1]
 
         if direction == "L":
-            goal_x = last_x - num
+            goal_x = last_x - length
             iter_x = last_x
             while iter_x != goal_x:
                 iter_x -= 1
                 visited_positions.append((iter_x, last_y))
         elif direction == "U":
-            goal_y = last_y + num
+            goal_y = last_y + length
             iter_y = last_y
             while iter_y != goal_y:
                 iter_y += 1
                 visited_positions.append((last_x, iter_y))
         elif direction == "R":
-            goal_x = last_x + num
+            goal_x = last_x + length
             iter_x = last_x
             while iter_x != goal_x:
                 iter_x += 1
                 visited_positions.append((iter_x, last_y))
         elif direction == "D":
-            goal_y = last_y - num
+            goal_y = last_y - length
             iter_y = last_y
             while iter_y != goal_y:
                 iter_y -= 1
